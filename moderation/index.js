@@ -12,7 +12,7 @@ app.post("/events", async (req, res) => {
     const comment = { type: "CommentModerated",data :{...data, status: status}};
     console.log('comment moderated');
     console.log(comment);
-    await axios.post("http://localhost:4005/events", comment);
+    await axios.post("http://event-bus-clusterip-srv:4005/events", comment);
   }
   res.send({});
 });

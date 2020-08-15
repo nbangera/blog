@@ -20,7 +20,7 @@ app.post("/posts/:id/comments", async (req, res) => {
   const data = { id: commentId, comment,status:'pending' };
   comments.push(data);
 
-  await axios.post("http://localhost:4005/events", {
+  await axios.post("http://event-bus-clusterip-srv:4005/events", {
     type: "CommentCreated",
     data: { ...data, postId: req.params.id },
   });
@@ -44,7 +44,7 @@ app.post("/events", async (req, res) => {
       type:"CommentUpdated",data:{...comment,postId:postId}
     }
     console.log(updatedCommentEvent);
-    await axios.post('http://localhost:4005/events',updatedCommentEvent);
+    await axios.post('http://event-bus-clusterip-srv:4005/events',updatedCommentEvent);
   }  
   res.send({});
 });
