@@ -8,7 +8,7 @@ export const CommentCreate = ({ postId }) => {
 
     const OnCommentAdd = async (event) => {
         event.preventDefault();
-        await axios.post(`http://localhost:4001/posts/${postId}/comments`, { 'comment' : comment })
+        await axios.post(`http://posts.com/posts/${postId}/comments`, { 'comment' : comment })
         setComment('');
     }
 
